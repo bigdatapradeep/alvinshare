@@ -1,0 +1,101 @@
+
+---ARRAY---------------------------------------
+problems :
+1.Reverse an int|string in an array.
+2.Find Duplicate int|string in an array
+DSA:
+1.Implement Array insertAt/removeAt/indexof
+2.Implement Dynamic Array ArrayList
+
+---LinkedList------------------------------------------------------
+problems:
+1. Reverse a linkedlist. Iterative/recurssive https://www.geeksforgeeks.org/reverse-a-linked-list/
+2. Find Kth node from the end of linkedlist.https://www.geeksforgeeks.org/nth-node-from-the-end-of-a-linked-list/
+3. Find the middle of a linked list in one pass. LinkedList.printMiddle() https://www.geeksforgeeks.org/write-a-c-function-to-print-the-middle-of-the-linked-list/
+4. Check to see if a linked list has a loop.LinkedList.hasLoop() - Floyd’s Cycle-finding Algorithm -two pointers (slow and fast) 
+DSA:
+1. Implement LinkedList addFirst/addLast/indexof/contains/removeFirst/removeLast/size
+
+---STACK-----------------------------------------------------------
+problems:
+1 Reverse a string using stack.
+2 Check String Expression is balance or not. for every open there is close brackets etc. eg (2+2) using stack.
+DSA:
+1.Implement stack using Array/LinkedList. push/pop/peek/isempty/isfull
+2.Implement two stacks in one array. push/pop/peek/isempty/isfull
+3.stack.min()
+---Queue------------------------------------------------------------
+problems:
+1.Reverse a Queue.
+2.Given an integer K and a queue of integers, write code to reverse the order of the first K elements of the queue.   
+  Input:  Q = [10, 20, 30, 40, 50], K = 3 Output: Q = [30, 20, 10, 40, 50]
+DSA
+1. Implement Queue using Array/CircularArray/Stack
+2. Implement  priority Queue.
+3. Implement Queue using LinkedList enqueue/dequeue/peek/isempty/size
+4. Implement stack with two queues.
+HashMap--------------------------------------------------------------------
+1.first non repeated character.
+2.First repeating character.
+3.Find the most repeated element in an array of integers
+4.Given an array of integers, count the number of unique pairs of integers that have difference k. 
+5.Given an array of integers, return indices of the two numbers such that they add up to a specific target
+
+DSA:
+Build a hash table from scratch. Use linear probing strategy for handling collisions.ie implement HashMap .
+
+--------------------------------------------------------------------
+git=https://app.pluralsight.com/library/courses/mastering-git/table-of-contents
+OOPS execersie->https://www.ntu.edu.sg/home/ehchua/programming/java/J3f_OOPExercises.html
+inheritance -->https://javaconceptoftheday.com/java-inheritance-practice-coding-questions/
+OCP 8 kathy siera two minutes drill -- > covers all important points.
+--java  puzzle--
+https://javarevisited.blogspot.com/2017/07/top-50-java-programs-from-coding-Interviews.html
+https://javarevisited.blogspot.com/2015/06/top-20-array-interview-questions-and-answers.html
+https://javarevisited.blogspot.com/2015/01/top-20-string-coding-interview-question-programming-interview.html
+https://javarevisited.blogspot.com/2016/01/sql-exists-example-customers-who-never-ordered.html#more
+https://javarevisited.blogspot.com/search/label/data%20structure%20and%20algorithm?max-results=3
+https://javahungry.blogspot.com/2017/09/25-different-number-pattern-programs-in-java.html
+https://javainterviewpoint.com/how-to-open-class-file-in-java/
+https://javaconceptoftheday.com/number-pattern-programs-in-java/
+--
+String
+https://javaconceptoftheday.com/java-string-interview-questions-and-answers/
+collection
+hashmap https://www.java67.com/2017/08/top-10-java-hashmap-interview-questions.html
+
+-java code--------------
+1. Singleton / factory pattern./syncronised block
+2.cloud dataflow
+3.spark stream +kafka code
+4.hive CTOS  bucketvspartition
+5.spark core  mug. ->http://pathirippilly.blogspot.com/2018/12/understanding-spark-architecture-in.html  
+				 / memo calculation	-->	https://github.com/vaquarkhan/vaquarkhan/wiki/How-to-calculate-node-and-executors-memory-in-Apache-Spark
+6 mongo neo4j quick reference.(trypes of sql when to choose which one.
+	--mongdo https://gist.github.com/bradtraversy/f407d642bdc3b31681bc7e56d95485b6
+	--neo4j https://gist.github.com/DaniSancas/1d5265fc159a95ff457b940fc5046887
+7.cloud - refresh all chart to choose which product.
+
+--
+Top50 
+1. P1Fibonacci Series (recurssive)-> https://learning.oreilly.com/library/view/java-how-to/9780134751962/xhtml/fileP700101433900000000000000000A928.xhtml
+2. p2 prime number or not ->
+===
+kafka config /failover point to remeber
+Simple retry logic
+---
+SQL
+----
+outer joins https://learning.oreilly.com/library/view/sql-queries-for/9780134858432/ch9.xhtml
+-usecases
+Find Missing Values
+Find Partially Matched Information
+----
+Skills: Java/Scala, ETL, Spark, Hadoop, Hive, Impala, Sqoop, HBase, Confluent Kafka, Oracle, Linux, Git, etc
+----
+Corejava
+collection
+ -https://www.techbeamers.com/java-collection-interview-questions-developers/
+https://www.edureka.co/blog/interview-questions/java-collections-interview-questions/
+pattern
+	Factory pattern https://www.journaldev.com/1392/factory-design-pattern-in-java

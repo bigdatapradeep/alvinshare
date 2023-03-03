@@ -1,0 +1,4 @@
+Master SQL concepts
+1 Grouping,Aggregation,Summarisation -Stat EDA
+2 join
+3 subquery

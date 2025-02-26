@@ -1,0 +1,76 @@
+@echo off
+setlocal enabledelayedexpansion
+
+:: PostgreSQL configuration
+set PGBIN=C:\Program Files\PostgreSQL\15\bin
+set PGDATA=C:\Program Files\PostgreSQL\15\data
+set PGUSER=postgres
+set PGPASSWORD=postgres
+set PGPORT=5432
+set PGDATABASE=postgres
+
+:: Check if PostgreSQL is already running
+echo Checking if PostgreSQL is already running...
+tasklist /FI "IMAGENAME eq postgres.exe" 2>NUL | find /I "postgres.exe" >NUL
+if not errorlevel 1 (
+    echo PostgreSQL is already running.
+    goto :show_connection_info
+)
+
+:: Start PostgreSQL service
+echo Starting PostgreSQL server...
+echo.
+
+cd /d "%PGBIN%"
+start "PostgreSQL" /B pg_ctl.exe start -D "%PGDATA%" -l logfile.log
+
+:: Wait for PostgreSQL to start
+echo Waiting for PostgreSQL to start...
+timeout /t 5 /nobreak > NUL
+
+:: Verify if PostgreSQL started successfully
+:check_status
+tasklist /FI "IMAGENAME eq postgres.exe" 2>NUL | find /I "postgres.exe" >NUL
+if errorlevel 1 (
+    echo Failed to start PostgreSQL. Check logfile.log for details.
+    goto :end
+) else (
+    echo PostgreSQL server started successfully.
+    echo.
+)
+
+:show_connection_info
+:: Get hostname and IP information
+for /f "tokens=*" %%a in ('hostname') do set HOSTNAME=%%a
+for /f "tokens=*" %%a in ('powershell -command "(Get-NetIPAddress -AddressFamily IPv4 -InterfaceAlias Ethernet,Wi-Fi | Where-Object {$_.IPAddress -notlike \"127.*\"}).IPAddress"') do set IPADDRESS=%%a
+
+:: Connection information in tabular format
+echo +------------------------------------------------------------------------------+
+echo ^|                       PostgreSQL Connection Information                      ^|
+echo +------------------------------------------------------------------------------+
+echo ^| Parameter       ^| Value                                                     ^|
+echo +----------------+-----------------------------------------------------------+
+echo ^| Hostname       ^| %HOSTNAME%                                                
+echo ^| IPv4 Address   ^| %IPADDRESS%                                               
+echo ^| Port           ^| %PGPORT%                                                   
+echo ^| Username       ^| %PGUSER%                                                   
+echo ^| Database       ^| %PGDATABASE%                                               
+echo ^| JDBC URL       ^| jdbc:postgresql://%HOSTNAME%:%PGPORT%/%PGDATABASE%         
+echo +----------------+-----------------------------------------------------------+
+echo.
+
+:: Test connection with a simple query
+echo Testing connection with a simple query...
+"%PGBIN%\psql.exe" -h localhost -p %PGPORT% -U %PGUSER% -d %PGDATABASE% -c "SELECT 'PostgreSQL is running successfully!' as status;"
+if errorlevel 1 (
+    echo Failed to execute test query. Please check your PostgreSQL installation.
+) else (
+    echo Connection test completed successfully.
+)
+
+echo.
+echo PostgreSQL is now running and ready for connections.
+echo To stop the server, run stop_postgres.bat
+
+:end
+endlocal

@@ -1,0 +1,46 @@
+@echo off
+setlocal enabledelayedexpansion
+
+:: PostgreSQL configuration
+set PGBIN=C:\Program Files\PostgreSQL\15\bin
+set PGDATA=C:\Program Files\PostgreSQL\15\data
+
+:: Check if PostgreSQL is running
+echo Checking if PostgreSQL is running...
+tasklist /FI "IMAGENAME eq postgres.exe" 2>NUL | find /I "postgres.exe" >NUL
+if errorlevel 1 (
+    echo PostgreSQL is not running.
+    goto :end
+)
+
+:: Stop PostgreSQL service
+echo Stopping PostgreSQL server...
+echo.
+
+cd /d "%PGBIN%"
+"%PGBIN%\pg_ctl.exe" stop -D "%PGDATA%" -m fast
+
+:: Wait a moment for PostgreSQL to stop
+timeout /t 3 /nobreak > NUL
+
+:: Verify if PostgreSQL stopped successfully
+tasklist /FI "IMAGENAME eq postgres.exe" 2>NUL | find /I "postgres.exe" >NUL
+if errorlevel 1 (
+    echo PostgreSQL server stopped successfully.
+) else (
+    echo Failed to stop PostgreSQL. Attempting to force stop...
+    taskkill /F /IM postgres.exe
+    timeout /t 2 /nobreak > NUL
+    
+    tasklist /FI "IMAGENAME eq postgres.exe" 2>NUL | find /I "postgres.exe" >NUL
+    if errorlevel 1 (
+        echo PostgreSQL server stopped successfully.
+    ) else (
+        echo Failed to stop PostgreSQL. Please check for running processes manually.
+    )
+)
+
+:end
+echo.
+echo PostgreSQL stop script completed.
+endlocal

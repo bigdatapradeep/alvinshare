@@ -1,6 +1,0 @@
-coefficient- குணகம்
-determinants-தீர்மானிப்பவர்கள்
-models-மாதிரிகள்
-dimension reduction-பரிமாண குறைப்பு
-variables -மாறிகள்
-correlation coefficient - தொடர்பு குணகம்
